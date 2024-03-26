@@ -8,10 +8,9 @@ import {catalog} from "./catalog-data";
 })
 export class FlowerDataService {
 
-  private flowers: Flower[] = []
+  private flowers: Flower[];
   constructor() {
-    catalog.flowers.forEach(
-      (flowerJson: FlowerJson) => this.flowers.push(FlowerDataService.json2Flower(flowerJson)));
+    this.flowers = catalog.flowers.map((flowerJson: FlowerJson) => FlowerDataService.json2Flower(flowerJson));
   }
 
   private static imageFolder = 'assets/images/flowers/';
