@@ -1,6 +1,6 @@
 <h2>Flower Catalog</h2>
 <table>
-  @for(f of (flowers | async); track f.id){
+  @for(f of flowers; track f.id){
     <tr>
       <td>
         <a [routerLink]="['/flowers',f.id]">
