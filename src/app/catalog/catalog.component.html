@@ -1,18 +1,24 @@
 <h2>Flower Catalog</h2>
-<table>
-  @for(f of (flowers | async); track f.id){
-    <tr>
-      <td>
-        <a [routerLink]="['/flowers',f.id]">
-          <img class="thumb"
-               [src]="f.smallImgSrc" [alt]="f.label">
-        </a>
-      </td>
-      <td>
-        <span class="flower_label">{{f.label}}</span>&nbsp;&nbsp;
-        <span class="flower_price">{{f.price | currency}}</span><br>
-        {{f.description}}
-      </td>
-    </tr>
-  }
-</table>
+@if (flowers !== undefined) {
+  <table>
+    @for (f of flowers; track f.id) {
+      <tr>
+        <td>
+          <a [routerLink]="['/flowers',f.id]">
+            <img class="thumb"
+                 [src]="f.smallImgSrc" [alt]="f.label">
+          </a>
+        </td>
+        <td>
+          <span class="flower_label">{{ f.label }}</span>&nbsp;&nbsp;
+          <span class="flower_price">{{ f.price | currency }}</span><br>
+          {{ f.description }}
+        </td>
+      </tr>
+    }
+  </table>
+} @else {
+  <p class="message">
+    The data is not found.
+  </p>
+}
