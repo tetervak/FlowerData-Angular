@@ -1,18 +1,28 @@
-@if(flower !== undefined){
-  <p>
-    <span class="flower_label">Flower:</span>
-    <span class="flower_name">{{flower.label}}</span>
-  </p>
-  <p>
-    <img [src]='flower.largeImgSrc' [alt]='flower.label' class='flower_image'>
-  </p>
-  <div class="text_box">
-    {{flower.description}}
-  </div>
-}@else{
-  <p class="message">
-    The data is not found.
-  </p>
+@switch (loadingStatus){
+  @case (LoadingStatus.LOADING){
+    <p class="message">
+      Loading Data.
+    </p>
+  }
+  @case (LoadingStatus.SUCCESS){
+    @if(flower !== undefined){
+      <p>
+        <span class="flower_label">Flower:</span>
+        <span class="flower_name">{{flower.label}}</span>
+      </p>
+      <p>
+        <img [src]='flower.largeImgSrc' [alt]='flower.label' class='flower_image'>
+      </p>
+      <div class="text_box">
+        {{flower.description}}
+      </div>
+    }
+  }
+  @case (LoadingStatus.ERROR){
+    <p class="message">
+      Server Connection Error.
+    </p>
+  }
 }
 <p>
   <a routerLink="/catalog">Flower Catalog</a>

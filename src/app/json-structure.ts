@@ -15,3 +15,7 @@ export interface FlowerJson {
 export interface CatalogJson {
   flowers: FlowerJson[];
 }
+
+export interface DataJson {
+  _embedded: CatalogJson;
+}

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Subscription} from "rxjs";
 import {Flower} from "../flower";
 import {FlowerDataService} from "../flower-data.service";
 import {AsyncPipe, CurrencyPipe} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {LoadingStatus} from "../loading-status";
 
 @Component({
   selector: 'app-flower-index',
@@ -18,15 +19,26 @@ import {RouterLink} from "@angular/router";
 })
 export class CatalogComponent {
 
-  flowers: Flower[] = [];
+  flowers: Flower[] | undefined;
+
+  loadingStatus: LoadingStatus = LoadingStatus.LOADING;
 
   private flowersSub: Subscription | undefined;
 
   constructor(flowerDataService: FlowerDataService) {
-    flowerDataService.getAllFlowers().subscribe(flowers => this.flowers = flowers);
+    this.flowersSub = flowerDataService.getAllFlowers().subscribe({
+        next: flowers => {
+          this.flowers = flowers;
+          this.loadingStatus = LoadingStatus.SUCCESS
+        },
+        error: () => this.loadingStatus = LoadingStatus.ERROR
+      }
+    );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.flowersSub?.unsubscribe();
   }
+
+  protected readonly LoadingStatus = LoadingStatus;
 }

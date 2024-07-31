@@ -27,3 +27,9 @@ img.thumb{
   border: solid 2px #03a9f4;
   background: #03a9f4;
 }
+
+p.message {
+  font-size: larger;
+  font-weight: bolder;
+  color: crimson;
+}
