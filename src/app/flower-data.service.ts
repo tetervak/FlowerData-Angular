@@ -12,8 +12,8 @@ export class FlowerDataService {
   constructor(private http: HttpClient) {
   }
 
-  private static imageFolder: string = '/images/flowers/';
-  private static catalogUri: string = '/data/catalog.json'
+  private static imageFolder: string = 'images/flowers/';
+  private static catalogUri: string = 'data/catalog.json'
 
   private static json2Flower(flowerJson: FlowerJson): Flower {
     const flower: Flower = new Flower();
