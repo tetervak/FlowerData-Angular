@@ -1,6 +1,13 @@
 main{
   font-family: sans-serif;
   padding-left: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+app-flower-details{
+  margin-left: 3em;
 }
 
 h1{

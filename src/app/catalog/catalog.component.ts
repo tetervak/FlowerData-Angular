@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, input, Output} from '@angular/core';
 import {Observable, Subscription} from "rxjs";
 import {Flower} from "../flower";
 import {FlowerDataService} from "../flower-data.service";
@@ -18,14 +18,11 @@ import {RouterLink} from "@angular/router";
 })
 export class CatalogComponent {
 
-  flowers: Flower[] | undefined;
-  private flowersSub: Subscription | undefined;
+  @Input() flowers: Flower[] | undefined;
 
-  constructor(flowerDataService: FlowerDataService) {
-    this.flowersSub = flowerDataService.getAllFlowers().subscribe(flowers => this.flowers = flowers);
-  }
+  @Output() flowerSelected: EventEmitter<Flower>  = new EventEmitter();
 
-  ngOnDestroy(){
-    this.flowersSub?.unsubscribe();
+  onFlowerSelect(f: Flower): void {
+    this.flowerSelected.emit(f);
   }
 }
