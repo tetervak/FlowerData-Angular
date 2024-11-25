@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import {FooterComponent} from "./footer/footer.component";
 import {CatalogComponent} from "./catalog/catalog.component";
 import {FlowerDetailsComponent} from "./flower-details/flower-details.component";
@@ -10,7 +9,7 @@ import {FlowerDataService} from "./flower-data.service";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, CatalogComponent, FlowerDetailsComponent],
+  imports: [FooterComponent, CatalogComponent, FlowerDetailsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
