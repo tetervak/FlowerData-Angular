@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Flower} from "./flower";
 import {CatalogJson, FlowerJson} from "./json-structure";
 import {HttpClient} from "@angular/common/http";
-import {map, Observable} from "rxjs";
+import {debounceTime, delay, map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,8 @@ export class FlowerDataService {
     return this.http.get<CatalogJson>(FlowerDataService.catalogUri)
       .pipe(
         map(catalog => catalog.flowers
-          .map(flower => FlowerDataService.json2Flower(flower)))
+          .map(flower => FlowerDataService.json2Flower(flower))),
+        delay(1000)
       )
   }
 

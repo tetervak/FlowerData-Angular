@@ -24,11 +24,10 @@ export class FlowerDetailsComponent {
     const id: string | null =  activatedRoute.snapshot.paramMap.get('id');
     if(id != null){
       this.flowerSub =
-        flowerDataService.getFlowerById(id).subscribe(flower => this.flower = flower);
+        flowerDataService.getFlowerById(id).subscribe(flower => {
+          this.flower = flower;
+          this.flowerSub?.unsubscribe();
+        });
     }
-  }
-
-  ngOnDestroy(){
-    this.flowerSub?.unsubscribe();
   }
 }
