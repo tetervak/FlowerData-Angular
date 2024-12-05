@@ -31,13 +31,7 @@ export class FlowerDataService {
       .pipe(
         map(catalog => catalog.flowers
           .map(flower => FlowerDataService.json2Flower(flower))),
-        delay(1000)
+        //delay(1000)
       )
-  }
-
-  public getFlowerById(id: string): Observable<Flower | undefined>{
-    return this.getAllFlowers().pipe(
-      map(flowers => flowers.find(flower => flower.id === id))
-    )
   }
 }

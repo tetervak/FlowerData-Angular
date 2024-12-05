@@ -1,9 +1,16 @@
 main{
   font-family: sans-serif;
   padding-left: 1em;
+  display: flex;
 }
 
 h1{
   color: #4caf50;
   text-shadow: 2px 2px 5px #81c784;
 }
+
+app-flower-details{
+  margin-left: 3em;
+}
+
+

@@ -1,5 +1,6 @@
 <h1>{{title}}</h1>
 <main>
-  <router-outlet></router-outlet>
+  <app-flower-index [flowers]="flowers" (flowerSelected)="onFlowerSelected($event)"></app-flower-index>
+  <app-flower-details [flower]="selectedFlower"></app-flower-details>
 </main>
 <app-footer name="Applied Computing"></app-footer>

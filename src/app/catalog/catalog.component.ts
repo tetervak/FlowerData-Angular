@@ -1,33 +1,21 @@
-import { Component } from '@angular/core';
-import {Observable, Subscription} from "rxjs";
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Flower} from "../flower";
-import {FlowerDataService} from "../flower-data.service";
-import {AsyncPipe, CurrencyPipe} from "@angular/common";
+import {CurrencyPipe} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-flower-index',
   standalone: true,
-  imports: [
-    AsyncPipe,
-    RouterLink,
-    CurrencyPipe
-  ],
+  imports: [],
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
 export class CatalogComponent {
 
-  flowers: Flower[] | undefined;
-  subscription: Subscription;
+  @Input() flowers: Flower[] | undefined;
+  @Output() flowerSelected = new EventEmitter<Flower>();
 
-  constructor(flowerDataService: FlowerDataService) {
-    this.subscription = flowerDataService.getAllFlowers().subscribe(
-      flowers => this.flowers = flowers
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  onFlowerSelected(f: Flower) {
+    this.flowerSelected.emit(f);
   }
 }

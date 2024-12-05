@@ -4,6 +4,14 @@
   font-weight: bolder;
 }
 
+span.flower_price{
+  margin-left: 2em;
+  font-size: larger;
+  font-weight: bolder;
+  color: #00C853;
+}
+
+
 .flower_name{
   font-size: larger;
   font-weight: bolder;
