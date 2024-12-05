@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Flower} from "./flower";
 import {CatalogJson, FlowerJson} from "./json-structure";
 import {HttpClient} from "@angular/common/http";
-import {debounceTime, delay, map, Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

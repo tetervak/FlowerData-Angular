@@ -1,15 +1,11 @@
 import {Component, Input} from '@angular/core';
 import {Flower} from "../flower";
-import {Subscription} from "rxjs";
-import {FlowerDataService} from "../flower-data.service";
-import {ActivatedRoute, RouterLink} from "@angular/router";
 import {CurrencyPipe} from "@angular/common";
 
 @Component({
   selector: 'app-flower-details',
   standalone: true,
   imports: [
-    RouterLink,
     CurrencyPipe
   ],
   templateUrl: './flower-details.component.html',
